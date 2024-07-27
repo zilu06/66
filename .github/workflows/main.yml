@@ -2,8 +2,9 @@ name: weixin
 on:
   workflow_dispatch:
   schedule: 
-    # 代表国际标准时间23点0分，北京时间需要+8小时，代表北京时间上午7点运行
-    - cron: '0 23 * * *'
+    # 代表国际标准时间21点30分，北京时间需要+8小时，代表北京时间上午5点30分点运行
+    # 21改成23就是早上七点半发(关注微信公众号：繁星资源，更多资源等你拿~)
+    - cron: '00 23 * * *'
 jobs:
 #将工作流程中运行的所有作业组合在一起
   build:
@@ -12,10 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
     
-      - name: Set up Python 3.9
+      - name: Set up Python 3.11
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9.1
+          python-version: 3.11.0
       - name: Set timezone
         run: |
           cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
